@@ -48,10 +48,15 @@ public class BaseRepository<T, TKey> : IRepository<T, TKey>
         entity.Created(auditStamper);
         
         data.Add(entity);
+        //Reload(entity);
     }
 
-    private void Reload()
-    {
+    private void Reload(T entity)
+    {   
+        //string fileName = "../backend/ShelterBuddy.CodePuzzle.Core/DataAccess/Data/Animals.json";
+        //string jsonString = JsonConvert.SerializeObject(entity);
+        //File.AppendAllText(fileName, jsonString);
+
     }
 
     private class AuditStamper : IAuditStamper

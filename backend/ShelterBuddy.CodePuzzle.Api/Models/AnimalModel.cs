@@ -5,6 +5,7 @@ public class AnimalModel
     public string? Id { get; init; }
     public string? Name { get; init; }
     public string? Colour { get; init; }
+    public string? Species { get; init; }
     public string? MicrochipNumber { get; init; }
     public DateTime? DateOfBirth { get; init; }
     public DateTime? DateInShelter { get; init; }

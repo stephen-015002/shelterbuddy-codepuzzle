@@ -1,27 +1,27 @@
 [
   {
     "Name": "Billy",
-    "Color": "Brown",
+    "Colour": "Brown",
     "DateOfBirth": "2020-08-01",
     "DateInShelter": "2022-01-01",
-    "AgeInYears": 6,
-    "AgeInMonths": 4,
-    "AgeInWeeks": 1
+    "AgeYears": 6,
+    "AgeMonths": 4,
+    "AgeWeeks": 1
   },
   {
     "Name": "Teddy",
-    "Color": "White",
+    "Colour": "White",
     "DateInShelter": "2022-06-01"
   },
   {
     "Name": "Gates",
-    "Color": "Green",
+    "Colour": "Green",
     "DateInShelter": "2022-04-01",
-    "AgeInMonths": 6
+    "AgeMonths": 6
   },
   {
     "Name": "Simona",
-    "Color": "Yellow and Blue",
+    "Colour": "Yellow and Blue",
     "DateInShelter": "2022-03-03"
   }
 ]

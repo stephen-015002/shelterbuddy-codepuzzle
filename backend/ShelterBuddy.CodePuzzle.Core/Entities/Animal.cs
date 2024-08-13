@@ -4,6 +4,7 @@ public class Animal : BaseEntity<Guid>
 {
     public string? Name { get; set; }
     public string? Colour { get; set; }
+    public string? Species { get; set; }
     public string? MicrochipNumber { get; set; }
     public DateTime? DateOfBirth { get; set; }
     public DateTime? DateInShelter { get; set; }
