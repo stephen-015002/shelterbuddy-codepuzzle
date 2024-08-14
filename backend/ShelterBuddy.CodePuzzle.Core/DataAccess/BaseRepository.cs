@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.ComponentModel;
+using System.Reflection;
 using System.Text.Json.Nodes;
 using Newtonsoft.Json;
 using ShelterBuddy.CodePuzzle.Core.Entities;
@@ -48,15 +49,17 @@ public class BaseRepository<T, TKey> : IRepository<T, TKey>
         entity.Created(auditStamper);
         
         data.Add(entity);
-        //Reload(entity);
+
+        // Update Animals.json file
+        string fileName = "../ShelterBuddy.CodePuzzle.Core/DataAccess/Data/Animals.json";
+        string jsonString = JsonConvert.SerializeObject(data, Formatting.Indented);
+        File.WriteAllText(fileName, jsonString);
+
     }
 
-    private void Reload(T entity)
-    {   
-        //string fileName = "../backend/ShelterBuddy.CodePuzzle.Core/DataAccess/Data/Animals.json";
-        //string jsonString = JsonConvert.SerializeObject(entity);
-        //File.AppendAllText(fileName, jsonString);
-
+    private void Reload()
+    {
+        
     }
 
     private class AuditStamper : IAuditStamper

@@ -40,19 +40,15 @@ public class AnimalController : ControllerBase
         try
         {
             if (newAnimal.Name is null)
-            {
                 throw new Exception("Name cannot be empty");
-            }
+            
 
             if (newAnimal.Species is null)
-            {
                 throw new Exception("Species cannot be empty");
-            }
+            
 
             if (newAnimal.DateOfBirth is null & newAnimal.AgeMonths is null & newAnimal.AgeWeeks is null & newAnimal.AgeYears is null)
-            {
                 throw new Exception("Either Date of Birth or Age cannot be empty");
-            }
 
             repository.Add(new Animal
             {   
@@ -70,22 +66,7 @@ public class AnimalController : ControllerBase
                 AgeYears = newAnimal.AgeYears
             });
 
-            return Ok(repository.GetAll().Select(animal => new AnimalModel
-            {
-                Id = $"{animal.Id}",
-                Name = animal.Name,
-                Colour = animal.Colour,
-                Species = animal.Species,
-                DateFound = animal.DateFound,
-                DateLost = animal.DateLost,
-                MicrochipNumber = animal.MicrochipNumber,
-                DateInShelter = animal.DateInShelter,
-                DateOfBirth = animal.DateOfBirth,
-                AgeText = animal.AgeText,
-                AgeMonths = animal.AgeMonths,
-                AgeWeeks = animal.AgeWeeks,
-                AgeYears = animal.AgeYears
-            }).ToArray());
+            return Ok(Get());
         }
         catch (Exception e) 
         {
