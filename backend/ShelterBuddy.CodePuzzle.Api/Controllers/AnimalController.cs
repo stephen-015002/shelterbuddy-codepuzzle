@@ -36,42 +36,33 @@ public class AnimalController : ControllerBase
 
     [HttpPost]
     public ActionResult Post([FromForm] AnimalModel newAnimal)
-    {
-        try
-        {
-            if (newAnimal.Name is null)
-                throw new Exception("Name cannot be empty");
+    {   
+        if (newAnimal.Name is null)
+            return BadRequest("Name cannot be empty");
+
+
+        if (newAnimal.Species is null)
+            return BadRequest("Species cannot be empty");
             
 
-            if (newAnimal.Species is null)
-                throw new Exception("Species cannot be empty");
-            
+        if (newAnimal.DateOfBirth is null & newAnimal.AgeMonths is null & newAnimal.AgeWeeks is null & newAnimal.AgeYears is null)
+            return BadRequest("Either Date of Birth or Age cannot be empty");
 
-            if (newAnimal.DateOfBirth is null & newAnimal.AgeMonths is null & newAnimal.AgeWeeks is null & newAnimal.AgeYears is null)
-                throw new Exception("Either Date of Birth or Age cannot be empty");
-
-            repository.Add(new Animal
-            {   
-                Id = Guid.NewGuid(),
-                Name = newAnimal.Name,
-                Colour = newAnimal.Colour,
-                Species = newAnimal.Species,
-                DateFound = newAnimal.DateFound,
-                DateLost = newAnimal.DateLost,
-                MicrochipNumber = newAnimal.MicrochipNumber,
-                DateInShelter = newAnimal.DateInShelter,
-                DateOfBirth = newAnimal.DateOfBirth,
-                AgeMonths = newAnimal.AgeMonths,
-                AgeWeeks = newAnimal.AgeWeeks,
-                AgeYears = newAnimal.AgeYears
-            });
-
-            return Ok(Get());
-        }
-        catch (Exception e) 
-        {
-            return BadRequest(e.Message);
-        }
-        
+        repository.Add(new Animal
+        {   
+            Id = Guid.NewGuid(),
+            Name = newAnimal.Name,
+            Colour = newAnimal.Colour,
+            Species = newAnimal.Species,
+            DateFound = newAnimal.DateFound,
+            DateLost = newAnimal.DateLost,
+            MicrochipNumber = newAnimal.MicrochipNumber,
+            DateInShelter = newAnimal.DateInShelter,
+            DateOfBirth = newAnimal.DateOfBirth,
+            AgeMonths = newAnimal.AgeMonths,
+            AgeWeeks = newAnimal.AgeWeeks,
+            AgeYears = newAnimal.AgeYears
+        });
+        return Ok(Get());
     }
 }
